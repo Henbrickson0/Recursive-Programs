@@ -2,24 +2,25 @@
 public class Recursive1 {
     public static void main(String[] args) {
         Recursive1 test = new Recursive1();
-        test.DigitGenerator(2);
+        DigitGenerator(2);
     }
 
-    public void DigitGenerator(int n) {
-        if (n > 9) {
-            return;
-        }
-        GeneratorHelper(n, 0);
+    public static void DigitGenerator(int n) {
+        GeneratorHelper(0,n );
     }
 
 
-    public void GeneratorHelper(int n, int number) {
-        if (number < Math.pow(10, n)) {
-            for (int i = 0; i < number + 1; i++) {
-                GeneratorHelper(n, number + i);
-                System.out.println(number);
-            }
-        }
+    public static void GeneratorHelper(int current, int length) {
+       if (current > 0 && (current + "").length() == length)
+       {
+           System.out.println(current);
+           return;
+       }
+
+       for (int i = current % 10 + 1; i<=9; i++)
+       {
+           GeneratorHelper(current*10 + i, length);
+       }
 
     }
 
