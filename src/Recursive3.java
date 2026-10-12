@@ -3,25 +3,26 @@ import java.util.*;
 public class Recursive3 {
 
     public static void main(String[] args) {
-     NoRepeating(4, "0000");
+
+        NoRepeating(3, "");
     }
 
     public static void NoRepeating (int length, String start)
     {
 
-
-        if (start.length() < length)
-        {
-           // NoRepeating(length, start+"0");
-            start  = start + "0";
-
-        }
-        else if ((!(start.length() > length)))
+        if (start.length() == length)
         {
             System.out.println(start);
-            NoRepeating(length, start.substring(length-2) +
-                    Math.abs(Integer.parseInt(start.substring(length-1)) - 1));
+            return;
         }
+
+        NoRepeating(length, start + "0");
+
+        if (start.length()==0 || start.substring(start.length()-1).equals("0"))
+        {
+            NoRepeating(length, start + "1");
+        }
+
 
         //System.out.println(start);
 
